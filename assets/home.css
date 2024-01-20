@@ -1,0 +1,49 @@
+
+.gallery {
+    background-color: var(--primary-color);
+}
+
+.gallery .items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    padding: 0rem 1rem;
+    position: relative;
+    overflow: hidden;
+    max-height: 450px;
+    overflow: hidden;
+    padding: 1rem 0rem;
+}
+
+
+.gallery .items .card {
+    grid-column: span 1;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.gallery .items .card::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: linear-gradient(to top, #010101, transparent);
+    z-index: 0;
+}
+
+.gallery .items .card:hover {
+    grid-column: span 2;
+
+}
+
+.gallery .items .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 1s;
+}

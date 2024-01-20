@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Reservation Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="C:\Users\DIDI\Desktop\projet\style.css">
+
+    </head>
+    <nav class="nav-bar" id="navbar">
+        <input type="checkbox" id="bars">
+        <div class="content">
+            <div class="site-logo">
+                <a href="C:\Users\DIDI\Desktop\projet\index.html" class="logo-link">A-travel</a>
+            </div>
+    
+            <ul class="navigation">
+                <li class="link"><a href="C:\Users\DIDI\Desktop\projet\index.html">home</a></li>
+                <li class="link"><a href="C:\Users\DIDI\Desktop\projet\home.html">Destinations</a></li>
+                <li class="link"><a href="#about">about us</a></li>
+                 <li class="link"><a href="#blog">blog</a></li>
+                <li class="link"><a href="#gallery">gallery</a></li>
+                <li class="link"><a href="C:\Users\DIDI\Desktop\projet\contact.html">contact</a></li>
+    
+            </ul>
+    
+            <label for='bars' class="icon-bars"><i class="ri-bar-chart-2-fill"></i></label>
+        </div>
+    </nav>
+    <body>
+        
+        <section class = "banner">
+            <h2>BOOK YOUR FLIGHT NOW</h2>
+<div class="card-container">
+    <div class="card-img">
+    </div>
+
+    <div class="card-content">
+        <h3>Reservation</h3>
+        <form>
+            <div class="form-row">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" placeholder="Full Name">
+                <label for="phone-number">Phone Number:</label>
+                <input type="text" id="phone-number" placeholder="Phone Number">
+            </div>
+            <div class="form-row">
+                <label for="days">Select Day:</label>
+                <select name="days" id="days">
+                    <option value="day-select">Select Day</option>
+                    <option value="sunday">Sunday</option>
+                    <option value="monday">Monday</option>
+                    <option value="tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="thursday">Thursday</option>
+                    <option value="friday">Friday</option>
+                    <option value="saturday">Saturday</option>
+                </select>
+                <label for="hours">Select Hour:</label>
+                <select name="hours" id="hours">
+                    <option value="hour-select">Select Hour</option>
+                    <option value="10">10: 00</option>
+                    <option value="12">12: 00</option>
+                    <option value="14">14: 00</option>
+                    <option value="16">16: 00</option>
+                    <option value="18">18: 00</option>
+                    <option value="20">20: 00</option>
+                    <option value="22">22: 00</option>
+                </select>
+            </div>
+        
+           
+            <div class="form-row">
+                <label for="how-many-persons">How Many Persons?</label>
+                <input type="number" id="how-many-persons" placeholder="How Many Persons?" min="1">
+            </div>
+            <div class="add">
+                <div class="form-row">
+                    <label for="destination">Select Destination:</label>
+                    <select name="Destination" id="destination" onchange="updatePrice()">
+                        <option value="select-destination">Select Destination</option>
+                        <option value="hawaii">Hawaii</option>
+                        <option value="indonesia">Indonesia</option>
+                        <option value="australia">Australia</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="price">Price:</label>
+                <span id="price-display">$0</span>
+            </div>
+            
+            <div class="form-row">
+                <input type="submit" value="BOOK TABLE">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </section>
+        <script>
+            function updatePrice() {
+                var destinationSelect = document.getElementById("destination");
+                var priceDisplay = document.getElementById("price-display");
+                var selectedOption = destinationSelect.options[destinationSelect.selectedIndex];
+                var personNumber= document.getElementById("how-many-persons");
+                
+                var price = 0;
+                var personNumberint= parseInt(personNumber.value);
+                switch (selectedOption.value) {
+                    case "hawaii":
+                        price = 1000;
+                        break;
+                    case "indonesia":
+                        price = 800;
+                        break;
+                    case "australia":
+                        price = 700;
+                        break;
+                    default:
+                        console.log("Invalid destination:", selectedOption.value);
+                }
+                var totalPrice= price*personNumberint;
+                priceDisplay.textContent =  totalPrice +"DT";
+                document.getElementById("how-many-persons").addEventListener("input", updatePrice);
+
+            }
+
+        </script>
+        
+    </body>
+</html>
